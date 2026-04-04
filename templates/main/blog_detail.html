@@ -1,0 +1,16 @@
+﻿{% extends 'main/base.html' %}
+
+{% block title %}Hadija | {{ post.title }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container narrow">
+    <a class="text-link" href="{% url 'blog_list' %}">← Back to blog</a>
+    <h1>{{ post.title }}</h1>
+    <p class="eyebrow">{{ post.created_at|date:"M d, Y" }}</p>
+    <div class="card">
+      <p class="post-content">{{ post.content|linebreaks }}</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,36 @@
+﻿{% extends 'main/base.html' %}
+
+{% block title %}Hadija | Projects{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h1>Projects</h1>
+    <p class="muted">A selection of work crafted with modern, minimal design.</p>
+
+    <div class="card-grid">
+      {% for project in projects %}
+      <article class="card">
+        <div class="card-image">
+          {% if project.image %}
+            <img src="{{ project.image.url }}" alt="{{ project.title }}">
+          {% else %}
+            <div class="image-placeholder">Project</div>
+          {% endif %}
+        </div>
+        <div class="card-body">
+          <p class="eyebrow">{{ project.created_at|date:"M d, Y" }}</p>
+          <h3>{{ project.title }}</h3>
+          <p class="muted">{{ project.description }}</p>
+        </div>
+      </article>
+      {% empty %}
+      <article class="card empty">
+        <h3>No projects yet</h3>
+        <p class="muted">Use the admin panel to add your first project.</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

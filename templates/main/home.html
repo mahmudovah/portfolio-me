@@ -1,0 +1,90 @@
+﻿{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Hadija | Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <p class="eyebrow">Web Developer</p>
+      <h1>Hi, I'm <span>Hadija</span>.<br>Building clean, modern web experiences.</h1>
+      <p class="subhead">Minimal design, thoughtful code, and a focus on clarity. I build portfolio sites and blogs that feel calm and confident.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="{% url 'projects' %}">See Projects</a>
+        <a class="btn ghost" href="{% url 'blog_list' %}">Read Blog</a>
+      </div>
+      <div class="social hero-social">
+        <a href="https://github.com/mahmudovah" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+        <a href="https://t.me/nrs_20257" target="_blank" rel="noopener"><i class="fab fa-telegram"></i></a>
+        <a href="https://linkedin.com/in/hadija-mahmudova-108332348/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <img class="profile" src="{% static 'img/prophoto.jpg' %}" alt="Hadija profile">
+      <div>
+        <h2>Hadija</h2>
+        <p class="muted">Web Developer</p>
+        <p class="tagline">Focused on simple, modern UI with clean structure and responsive layouts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Featured Projects</h2>
+      <a class="text-link" href="{% url 'projects' %}">View all</a>
+    </div>
+    <div class="card-grid">
+      {% for project in projects %}
+      <article class="card">
+        <div class="card-image">
+          {% if project.image %}
+            <img src="{{ project.image.url }}" alt="{{ project.title }}">
+          {% else %}
+            <div class="image-placeholder">Project</div>
+          {% endif %}
+        </div>
+        <div class="card-body">
+          <h3>{{ project.title }}</h3>
+          <p class="muted">{{ project.description|truncatechars:140 }}</p>
+        </div>
+      </article>
+      {% empty %}
+      <article class="card empty">
+        <h3>No projects yet</h3>
+        <p class="muted">Add your first project from the admin panel.</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Latest Posts</h2>
+      <a class="text-link" href="{% url 'blog_list' %}">Read all</a>
+    </div>
+    <div class="card-grid">
+      {% for post in posts %}
+      <article class="card">
+        <div class="card-body">
+          <p class="eyebrow">{{ post.created_at|date:"M d, Y" }}</p>
+          <h3>{{ post.title }}</h3>
+          <p class="muted">{{ post.content|truncatechars:160 }}</p>
+          <a class="text-link" href="{% url 'blog_detail' post.pk %}">Read more</a>
+        </div>
+      </article>
+      {% empty %}
+      <article class="card empty">
+        <h3>No posts yet</h3>
+        <p class="muted">Create your first blog post in the admin panel.</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

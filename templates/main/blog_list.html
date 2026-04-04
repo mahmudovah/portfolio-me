@@ -1,0 +1,30 @@
+﻿{% extends 'main/base.html' %}
+
+{% block title %}Hadija | Blog{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h1>Blog</h1>
+    <p class="muted">Thoughts, tutorials, and notes from my web development journey.</p>
+
+    <div class="card-grid">
+      {% for post in posts %}
+      <article class="card">
+        <div class="card-body">
+          <p class="eyebrow">{{ post.created_at|date:"M d, Y" }}</p>
+          <h3>{{ post.title }}</h3>
+          <p class="muted">{{ post.content|truncatechars:180 }}</p>
+          <a class="text-link" href="{% url 'blog_detail' post.pk %}">Read more</a>
+        </div>
+      </article>
+      {% empty %}
+      <article class="card empty">
+        <h3>No blog posts yet</h3>
+        <p class="muted">Create posts from the admin panel.</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

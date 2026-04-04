@@ -1,0 +1,48 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Hadija | Portfolio{% endblock %}</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
+</head>
+<body>
+  <div class="page-bg"></div>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="logo" href="{% url 'home' %}">Hadija</a>
+      <nav class="nav">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'projects' %}">Projects</a>
+        <a href="{% url 'blog_list' %}">Blog</a>
+      </nav>
+      <a class="cta" href="{% url 'projects' %}">View Work</a>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <h3>Let us connect</h3>
+        <p class="muted">Social links only, simple and direct.</p>
+      </div>
+      <div class="social">
+        <a href="{{ social_links.github }}" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+        <a href="{{ social_links.telegram }}" target="_blank" rel="noopener"><i class="fab fa-telegram"></i></a>
+        <a href="{{ social_links.linkedin }}" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
