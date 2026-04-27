@@ -15,6 +15,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-1w1mx_%w^@tv4a_0l$9+f
 DEBUG = False
 
 ALLOWED_HOSTS = [
+    'mahmudovah.me',
+    'hadija.pythonanywhere.com',
     'mahmudovah.pythonanywhere.com',
     'mahmudovah.site',
     'www.mahmudovah.site',
