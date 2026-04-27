@@ -5,7 +5,7 @@ from .models import Post, Project
 
 SOCIAL_LINKS = {
     'github': 'https://github.com/mahmudovah',
-    'telegram': 'https://t.me/nrs_20257',
+    'telegram': 'https://t.me/h_dev26',
     'linkedin': 'https://linkedin.com/in/hadija-mahmudova-108332348/',
 }
 
